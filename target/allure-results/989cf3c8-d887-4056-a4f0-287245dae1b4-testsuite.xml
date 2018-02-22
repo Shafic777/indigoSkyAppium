@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:test-suite start="1517054979144" stop="1517055043380" version="1.5.4" xmlns:ns2="urn:model.allure.qatools.yandex.ru">
+    <name>Default suite : Default test</name>
+    <title>Default suite : Default test</title>
+    <test-cases>
+        <test-case start="1517055001593" stop="1517055042639" status="passed">
+            <name>loginToApp</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="testSuite" value="Default suite"/>
+                <label name="testGroup" value="Default test"/>
+                <label name="testClass" value="TestForMail"/>
+                <label name="testMethod" value="loginToApp"/>
+                <label name="host" value="LAPTOP-B0AHRUSC"/>
+                <label name="thread" value="2392@LAPTOP-B0AHRUSC.main(1)"/>
+            </labels>
+        </test-case>
+        <test-case start="1517055001593" stop="1517055042639" status="passed">
+            <name>loginToApp</name>
+            <steps/>
+            <attachments/>
+            <labels>
+                <label name="testSuite" value="Default suite"/>
+                <label name="testGroup" value="Default test"/>
+                <label name="testClass" value="TestForMail"/>
+                <label name="testMethod" value="loginToApp"/>
+                <label name="host" value="LAPTOP-B0AHRUSC"/>
+                <label name="thread" value="2392@LAPTOP-B0AHRUSC.main(1)"/>
+            </labels>
+        </test-case>
+    </test-cases>
+    <labels>
+        <label name="framework" value="TestNG"/>
+        <label name="language" value="JAVA"/>
+    </labels>
+</ns2:test-suite>
