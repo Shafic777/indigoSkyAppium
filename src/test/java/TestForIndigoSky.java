@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 
+
 import static com.indigoSky.CommonMethods.getRandomNumber;
 import static com.indigoSky.CommonMethods.initDriver;
 
@@ -16,12 +17,8 @@ public class TestForIndigoSky {
 	public void setup() throws MalformedURLException
 	{
 		System.out.println("Setting up driver");
-		try {
 
-			initDriver();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		initDriver();
 	}
 	
 	

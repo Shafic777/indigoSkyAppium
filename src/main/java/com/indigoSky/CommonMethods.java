@@ -11,8 +11,7 @@ import io.appium.java_client.android.AndroidDriver;
 public class CommonMethods {
 
 	public static AndroidDriver driver;
-	public static void initDriver() throws MalformedURLException, InterruptedException
-	{
+	public static void initDriver() throws MalformedURLException {
 		
 		DesiredCapabilities caps = DesiredCapabilities.android();
 		//caps.setCapability("appiumVersion", "1.7.1");
