@@ -8,52 +8,12 @@
   <properties>
         <java.version>1.8</java.version>
         <aspectj.version>1.8.10</aspectj.version>
+      <serenity.version>1.9.45</serenity.version> <!-- https://bintray.com/serenity/maven/serenity-core/ -->
+      <serenity.maven.version>1.9.45</serenity.maven.version>
+      <serenity.cucumber.version>1.9.15</serenity.cucumber.version>
+      <io.cucumber.version>2.4.0</io.cucumber.version>
     </properties>
-  <build>
-  <plugins>
-<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-compiler-plugin</artifactId>
-		<version>3.5.1</version>
-			<configuration>
-				<source>1.8</source>
-				<target>1.8</target>
-			</configuration>
-	</plugin>
-	<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.20.1</version>
-            <configuration>
-                <testFailureIgnore>false</testFailureIgnore>
-                <suiteXmlFiles>
-				<!-- TestNG suite XML files -->
-					<suiteXmlFile>testng.xml</suiteXmlFile>
-				</suiteXmlFiles>
-				 <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                      </configuration>
-            <dependencies>
-                <dependency>
-                    <groupId>org.aspectj</groupId>
-                    <artifactId>aspectjweaver</artifactId>
-                    <version>${aspectj.version}</version>
-                </dependency>
-            </dependencies>
-        </plugin>
-	</plugins>
-	</build>
-	<reporting>
-        <excludeDefaults>true</excludeDefaults>
-        <plugins>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
-            </plugin>
-        </plugins>
-    </reporting>
+
   <dependencies>
       <dependency>
           <groupId>io.qameta.allure</groupId>
@@ -65,12 +25,29 @@
     <artifactId>allure-testng-adaptor</artifactId>
     <version>1.5.4</version>
 </dependency>
-    <dependency>
+
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-junit</artifactId>
+          <version>${serenity.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-cucumber</artifactId>
+          <version>${serenity.cucumber.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-core</artifactId>
+          <version>${serenity.version}</version>
+      </dependency>
+   <!-- <dependency>
    	<groupId>org.testng</groupId>
       	<artifactId>testng</artifactId>
       	<version>6.9.10</version>
       	<scope>test</scope>
-      	</dependency>
+      	</dependency>-->
 <dependency>
     <groupId>commons-lang</groupId>
     <artifactId>commons-lang</artifactId>
@@ -105,11 +82,11 @@
     <artifactId>commons-lang3</artifactId>
     <version>3.1</version>
 </dependency>
-<dependency>
+<!--<dependency>
        <groupId>org.apache.httpcomponents</groupId>
        <artifactId>httpclient</artifactId>
        <version>4.3.5</version>
-   </dependency>
+   </dependency>-->
   <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-simple</artifactId>
@@ -135,7 +112,7 @@
            Refer:
            http://mvnrepository.com/artifact/com.codeborne/phantomjsdriver/1.4.1
         -->
-        <exclusion>
+        <!--<exclusion>
           <groupId>org.seleniumhq.selenium</groupId>
           <artifactId>selenium-remote-driver</artifactId>
         </exclusion>
@@ -146,8 +123,67 @@
         <exclusion>
           <groupId>org.seleniumhq.selenium</groupId>
           <artifactId>selenium-java</artifactId>
-        </exclusion>
+        </exclusion>-->
       </exclusions>
     </dependency>
   </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>${serenity.maven.version}</version>
+                <executions>
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <suiteXmlFiles>
+                        &lt;!&ndash; TestNG suite XML files &ndash;&gt;
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>-->
+        </plugins>
+    </build>
+    <!--<reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
+            </plugin>
+        </plugins>
+    </reporting>-->
 </project>
