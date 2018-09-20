@@ -1,17 +1,11 @@
-package com.amazon;
+package com.indigoSky;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import io.appium.java_client.android.AndroidDriver;
 
 public class CommonMethods {

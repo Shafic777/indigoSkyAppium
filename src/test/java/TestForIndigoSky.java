@@ -1,5 +1,4 @@
-import com.amazon.CommonMethods;
-import com.amazon.CommonMethods.*;
+import com.indigoSky.CommonMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
@@ -8,8 +7,8 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 
-import static com.amazon.CommonMethods.getRandomNumber;
-import static com.amazon.CommonMethods.initDriver;
+import static com.indigoSky.CommonMethods.getRandomNumber;
+import static com.indigoSky.CommonMethods.initDriver;
 
 public class TestForIndigoSky {
 	
