@@ -1,6 +1,7 @@
 package com.amazon;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class CommonMethods {
 		
 		DesiredCapabilities caps = DesiredCapabilities.android();
 		//caps.setCapability("appiumVersion", "1.7.1");
-		caps.setCapability("deviceName","Nexis 6 Emulator");
+		caps.setCapability("deviceName","Nexus_6_API_23");
 		caps.setCapability("deviceOrientation", "portrait");
 		System.out.println("Current Directory "+System.getProperty("user.dir"));
 		caps.setCapability("chromedriverExecutable", System.getProperty("user.dir")+"\\src\\test\\resources\\ChromeDriver\\2.20\\chromedriver.exe");
@@ -68,6 +69,13 @@ public class CommonMethods {
 
 	}
 
+	public static long getRandomNumber()
+	{
+		Date date= new Date();
+		long time = date.getTime();
+
+		return time;
+	}
 	public static void getSource()
 	{
 		System.out.println("...................................................................................................");
