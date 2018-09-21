@@ -25,10 +25,17 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.20.1</version>
             <configuration>
+                <includes>
+                    <!-- <include>**/*Test.java</include>-->
+                    <include>**/src/test/java/TestForIndigoSky.java</include>
+               <!--     <include>**/When*.java</include>
+                    <include>**/*Story.java</include>
+                    <include>**/*Cucumber.java</include>-->
+                </includes>
                 <testFailureIgnore>false</testFailureIgnore>
                 <suiteXmlFiles>
 				<!-- TestNG suite XML files -->
-					<suiteXmlFile>testng.xml</suiteXmlFile>
+					<suiteXmlFile>**/src/test/resources/testng.xml</suiteXmlFile>
 				</suiteXmlFiles>
 				 <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
