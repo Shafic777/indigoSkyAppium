@@ -22,7 +22,7 @@ public class TestForIndigoSky {
 	}
 	
 	
-//	@Test
+	@Test
 	public void loginToApp() throws MalformedURLException
 	{
 		System.out.println("Enter:loginToApp");
