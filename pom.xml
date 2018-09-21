@@ -35,7 +35,7 @@
                 <testFailureIgnore>false</testFailureIgnore>
                 <suiteXmlFiles>
 				<!-- TestNG suite XML files -->
-					<suiteXmlFile>**/src/test/resources/testng.xml</suiteXmlFile>
+					<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 				</suiteXmlFiles>
 				 <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
