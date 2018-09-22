@@ -2,6 +2,7 @@ import com.indigoSky.CommonMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -11,9 +12,9 @@ import java.net.MalformedURLException;
 import static com.indigoSky.CommonMethods.getRandomNumber;
 import static com.indigoSky.CommonMethods.initDriver;
 
-public class TestForIndigoSky {
+public class indigoSkyTest {
 	
-	@BeforeTest
+	@BeforeMethod
 	public void setup() throws MalformedURLException
 	{
 		System.out.println("Setting up driver");

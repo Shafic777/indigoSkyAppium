@@ -8,11 +8,11 @@
     <parameter name="browser" value="*chrome"/>
     <parameter name="chromeDriverPath" value="src/test/resources/ChromeDriver/2.20/chromedriver.exe"/>
 
-    <parameter name="runLocally" value="true"/>
+<!--    <parameter name="runLocally" value="true"/>-->
 
     <test name="SampleTest">
         <classes>
-            <class name="TestForIndigoSky"></class>
+            <class name="indigoSkyTest"></class>
         </classes>
     </test>
 </suite>
