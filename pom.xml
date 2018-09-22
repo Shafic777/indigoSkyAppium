@@ -23,15 +23,15 @@
 	<plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.20.1</version>
+            <version>2.22.0</version>
             <configuration>
-                <includes>
-                    <!-- <include>**/*Test.java</include>-->
-                    <include>**/src/test/java/TestForIndigoSky.java</include>
-               <!--     <include>**/When*.java</include>
+                <!--<includes>
+                    &lt;!&ndash; <include>**/*Test.java</include>&ndash;&gt;
+                    <include>src/test/java/indigoSkyTest.java</include>
+               &lt;!&ndash;     <include>**/When*.java</include>
                     <include>**/*Story.java</include>
-                    <include>**/*Cucumber.java</include>-->
-                </includes>
+                    <include>**/*Cucumber.java</include>&ndash;&gt;
+                </includes>-->
                 <testFailureIgnore>false</testFailureIgnore>
                 <suiteXmlFiles>
 				<!-- TestNG suite XML files -->
@@ -76,7 +76,7 @@
    	<groupId>org.testng</groupId>
       	<artifactId>testng</artifactId>
       	<version>6.9.10</version>
-      	<scope>test</scope>
+   <!--   	<scope>test</scope>-->
       	</dependency>
 <dependency>
     <groupId>commons-lang</groupId>
