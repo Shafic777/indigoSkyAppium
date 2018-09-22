@@ -34,7 +34,7 @@ public class indigoSkyTest {
 
 		System.out.println("Enter:loginToApp");
 		loginPage.validLogin();
-		loginPage.verifyHomePage();
+		loginPage.assertHomePage();
 		System.out.println("Exit:loginToApp");
 	}
 
@@ -48,6 +48,7 @@ public class indigoSkyTest {
 		long number=getRandomNumber();
 		System.out.println("Enter:SingUP");
 		loginPage.validSignUp(number);
+		loginPage.assertHomePage();
 		System.out.println("Exit:SignUp Flow");
 	}
 
