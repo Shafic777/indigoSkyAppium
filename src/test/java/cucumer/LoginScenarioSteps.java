@@ -1,5 +1,6 @@
 package cucumer;
 
+import cucumber.api.java.Before;
 import cucumber.api.java.en.*;
 import org.junit.BeforeClass;
 import serenitySteps.LoginSteps;
@@ -23,24 +24,33 @@ public class LoginScenarioSteps {
     public AndroidDriver driver;
 
 
+    @Before
+    public static void setup() throws MalformedURLException
+    {
+        System.out.println("Setting up driver");
 
+        initDriver();
+    }
     @Steps
     LoginSteps loginSteps;
 
-    @Given("^User is on login page$")
+   // @Given("^User is on login page$")
+   @Given("^User is on login page$")
     public void gotoLoginPage(){
         System.out.println("Enter:loginToApp");
       //  injectAnnotatedFieldsInto(driver, this);
 
     }
 
-    @When("I login using \"(.*)\" and \"(.*)\" credentials")
+    //@When("I login using \"(.*)\" and \"(.*)\" credentials")
+    @When("^I login using \"([^\"]*)\" and \"([^\"]*)\" credentials$")
     public void enterValidData(String email,String pass){
 
         loginSteps.enterLoginData(email,pass);
     }
 
-    @Then("I should be able to login to system")
+   // @Then("I should be able to login to system")
+   @Then("^I should be able to login to system$")
     public void checkErrorMessage(){
         //loginSteps.checkErrorMessage();
     }

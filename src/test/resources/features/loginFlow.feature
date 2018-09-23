@@ -9,6 +9,7 @@ Feature: Login to indigo app
 #    Then Signup should be sucessfull
 
 Scenario Outline: Login with the given user details
+
     Given User is on login page
     When I login using "<emailId>" and "<password>" credentials
     Then I should be able to login to system
