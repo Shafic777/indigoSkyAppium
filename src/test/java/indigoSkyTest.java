@@ -23,7 +23,8 @@ public class indigoSkyTest {
 	{
 		System.out.println("Setting up driver");
 
-		initDriver();
+		//initDriver();
+
 	}
 	
 	
