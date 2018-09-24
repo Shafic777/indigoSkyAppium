@@ -8,12 +8,16 @@ import java.util.Set;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
 
+import static com.indigoSky.AppiumController.LOG;
+import static com.indigoSky.PropertyReader.*;
+import static com.indigoSky.PropertyReader.appiumPort;
+
 public class CommonMethods {
 
 	public static AndroidDriver driver;
 	public static void initDriver() throws MalformedURLException {
 		
-		DesiredCapabilities caps = DesiredCapabilities.android();
+		/*DesiredCapabilities caps = DesiredCapabilities.android();
 		//caps.setCapability("appiumVersion", "1.7.1");
 		caps.setCapability("deviceName","Nexus_6_API_23");
 		caps.setCapability("deviceOrientation", "portrait");
@@ -27,9 +31,33 @@ public class CommonMethods {
 		caps.setCapability("appPackage","com.juniper.android");
 		caps.setCapability("appActivity","com.juniper.android.MainActivity");
 		
-		driver =  new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), caps);
-		
+		driver =  new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), caps);*/
+
 		//Thread.sleep(10000);
+
+		LOG.info("Setting Android Driver");
+		AppiumController.startAppiumServer();
+		//   AppiumEmulatorController.startEmulator();
+		//          AppiumEmulatorController.stoptEmulator();
+		try {
+			DesiredCapabilities caps = DesiredCapabilities.android();
+			caps.setCapability("automationName","appium");
+			caps.setCapability("deviceName",androidDeviceName);
+			//caps.setCapability("noReset", true);
+			caps.setCapability("recreateChromeDriverSessions", true);
+			caps.setCapability("deviceOrientation", deviceOrientation);
+			caps.setCapability("autoAcceptAlerts", true);
+			caps.setCapability("chromedriverExecutable", chromedriverExecutable);
+			caps.setCapability("platformName",platformName);
+			caps.setCapability("app",app);
+			caps.setCapability("appPackage",appPackage);
+
+			driver = new AndroidDriver(new URL("http://"+appiumIP+":"+appiumPort+"/wd/hub"), caps);
+		} catch (MalformedURLException e) {
+			LOG.info("Incorrect URL");
+			e.printStackTrace();
+			throw new RuntimeException("Unable to setup driver");
+		}
 	}
 	
 	public static void wait(int seconds)
