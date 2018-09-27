@@ -75,5 +75,11 @@ public class CommonMethods {
 		System.out.println(driver.getPageSource());
 		System.out.println("...................................................................................................");
 	}
-	
+
+	public static void wait(int seconds, String mess) {
+		try {
+			System.out.println("Waiting for "+seconds +" second(s) for "+mess );
+			Thread.sleep(seconds*1000);
+		}catch(Exception e) {}
+	}
 }
