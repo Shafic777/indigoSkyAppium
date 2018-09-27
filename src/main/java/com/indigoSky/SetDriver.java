@@ -12,8 +12,12 @@ public class SetDriver {
 
     public static class SetAndroidDriver {
         Logger LOG = LoggerFactory.getLogger(SetAndroidDriver.class);
+        PropertyReader propertiesReader = new PropertyReader();
 
-        public AndroidDriver createDriver(DesiredCapabilities desiredCapabilities) {
+        public SetAndroidDriver() throws Exception {
+        }
+
+        public AndroidDriver createDriver() {
             LOG.info("Setting Android Driver");
             AppiumController.startAppiumServer();
             //   AppiumEmulatorController.startEmulator();

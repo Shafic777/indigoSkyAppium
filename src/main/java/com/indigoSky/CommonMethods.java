@@ -26,7 +26,6 @@ public class CommonMethods {
 		caps.setCapability("browserName", "");
 		caps.setCapability("platformVersion","6.0");
 		caps.setCapability("platformName","Android");
-		//caps.setCapability("app","C:\\Users\\kumar\\eclipse-workspace\\AppiumMail\\src\\test\\resources\\HUE Mail.apk");
 		caps.setCapability("app",System.getProperty("user.dir")+"\\src\\test\\resources\\IndigoSky_QA_3.6.11.apk");
 		caps.setCapability("appPackage","com.juniper.android");
 		caps.setCapability("appActivity","com.juniper.android.MainActivity");
@@ -78,12 +77,11 @@ public class CommonMethods {
 	{
 			
 		Set<String> contextNames = driver.getContextHandles();
-		//WEBVIEW, WEBVIEW_com.worksap.company.huemail.mobile, NATIVE_APP
+
 		for (Iterator<String> it = contextNames.iterator(); it.hasNext(); ) {
 	        String f = it.next();
 	        System.out.println("Context :   " +f);
 	    }
-	    //adb shell am start -n com.worksap.company.huemail.mobile/.MainActivity
 		driver.context(contextName);
 		System.out.println(driver.context(contextName).getCurrentUrl());
 		wait(2);
