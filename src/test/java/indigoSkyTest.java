@@ -2,16 +2,12 @@ import Pages.BasePage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import com.indigoSky.CommonMethods;
-import org.graalvm.compiler.replacements.Log;
+//import jdk.internal.jline.internal.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Description;
-import sun.security.jgss.LoginConfigImpl;
-
 import java.net.MalformedURLException;
-
-
 import static com.indigoSky.CommonMethods.getRandomNumber;
 import static com.indigoSky.CommonMethods.initDriver;
 
@@ -44,19 +40,19 @@ public class indigoSkyTest extends BasePage {
 		System.out.println("Exit:loginToApp");
 	}
 
-	@Test
+	//@Test
     @Description("Verify user feedback flow")
     public void enterFeedback()
     {
-		Log.print("Feedback flow");
+		//Log.debug("Feedback flow");
         loginPage.validLogin(uname1,pass);
         homePage.selectTour();
         homePage.verifyTourDetailsAndEnterFeedback();
-		Log.print("End of feedback flow");
+		//Log.debug("End of feedback flow");
     }
 
 
-	@Test
+	//@Test
 	@Description("Verify Valid SignUp flow as buyer")
 	public void signUpToApp()
 	{
