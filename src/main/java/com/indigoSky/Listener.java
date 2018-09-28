@@ -79,7 +79,7 @@ public class Listener implements ITestListener {
     // This will provide the information on the test
 
     private void printTestResults(ITestResult result) {
-        Reporter.log("Test Method resides in " + result.getTestClass().getName(), true);
+        Reporter.log("Test Method resides in " + result.getTestClass().getName(), false);
         if (result.getParameters().length != 0) {
             String params = null;
             for (Object parameter : result.getParameters()) {
