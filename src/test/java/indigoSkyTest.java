@@ -2,29 +2,39 @@ import Pages.BasePage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import com.indigoSky.CommonMethods;
-//import jdk.internal.jline.internal.Log;
+import com.indigoSky.PropertyReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Description;
 import java.net.MalformedURLException;
+import java.util.Properties;
+
+
 import static com.indigoSky.CommonMethods.getRandomNumber;
 import static com.indigoSky.CommonMethods.initDriver;
 
 public class indigoSkyTest extends BasePage {
 
 	LoginPage loginPage=new LoginPage();
+
+
+	public indigoSkyTest() throws Exception {
+	}
+
 	HomePage homePage=new HomePage();
 /*	String uname="buyer@gmail.com";
 	String pass="password";*/
 	String uname1="caestledemo.agent@gmail.com";
     String pass="password";
-	
+
 	@BeforeMethod
-	public void setup() throws MalformedURLException
+	public void setup() throws Exception
 	{
 		System.out.println("Setting up driver");
+		PropertyReader propertyReader = new PropertyReader();
 		initDriver();
+
 	}
 	
 	
@@ -52,7 +62,8 @@ public class indigoSkyTest extends BasePage {
     }
 
 
-	//@Test
+
+	@Test
 	@Description("Verify Valid SignUp flow as buyer")
 	public void signUpToApp()
 	{
@@ -60,7 +71,6 @@ public class indigoSkyTest extends BasePage {
 		System.out.println("Enter:SingUP");
 		loginPage.validSignUp(number);
 		loginPage.assertHomePage();
-
 		System.out.println("Exit:SignUp Flow");
 	}
 

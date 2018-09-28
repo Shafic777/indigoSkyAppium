@@ -15,6 +15,7 @@ import static com.indigoSky.PropertyReader.appiumPort;
 public class CommonMethods {
 
 	public static AndroidDriver driver;
+
 	public static void initDriver() throws MalformedURLException {
 		
 		/*DesiredCapabilities caps = DesiredCapabilities.android();
@@ -36,7 +37,8 @@ public class CommonMethods {
 		//Thread.sleep(10000);
 
 		LOG.info("Setting Android Driver");
-		AppiumController.startAppiumServer();
+
+		//AppiumController.startAppiumServer();
 		//   AppiumEmulatorController.startEmulator();
 		//          AppiumEmulatorController.stoptEmulator();
 		try {
@@ -47,10 +49,14 @@ public class CommonMethods {
 			caps.setCapability("recreateChromeDriverSessions", true);
 			caps.setCapability("deviceOrientation", deviceOrientation);
 			caps.setCapability("autoAcceptAlerts", true);
-			caps.setCapability("chromedriverExecutable", chromedriverExecutable);
+			caps.setCapability("chromedriverExecutable", System.getProperty("user.dir")+chromedriverExecutable);
+		//	caps.setCapability("chromedriverExecutable", chromedriverExecutable);
 			caps.setCapability("platformName",platformName);
-			caps.setCapability("app",app);
+			caps.setCapability("app",System.getProperty("user.dir")+"\\src\\test\\resources\\IndigoSky_QA_3.6.11.apk");
+		///	caps.setCapability("app",System.getProperty("user.dir")+app);
+			caps.setCapability("browserName", "");
 			caps.setCapability("appPackage",appPackage);
+			caps.setCapability("appActivity","com.juniper.android.MainActivity");
 
 			driver = new AndroidDriver(new URL("http://"+appiumIP+":"+appiumPort+"/wd/hub"), caps);
 		} catch (MalformedURLException e) {

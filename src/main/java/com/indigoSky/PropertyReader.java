@@ -1,9 +1,9 @@
 package com.indigoSky;
 
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import org.apache.commons.io.FileUtils;
+
+import java.io.*;
 import java.util.Properties;
 
 public class PropertyReader {
@@ -22,9 +22,18 @@ public class PropertyReader {
     public static String appPackage = "";
     public static String appActivity = "";
 
+    public String propFile = "src/test/resources/application.properties";
+    private String propFileOnJenkins ="../application.properties";
+
     public PropertyReader() throws Exception {
-        InputStream inputStream = null;
+        InputStream inputStream;
         try {
+            File file = FileUtils.getFile(propFileOnJenkins);
+            if (file.exists()) {
+                inputStream = new FileInputStream(propFileOnJenkins);
+            } else {
+                inputStream = new FileInputStream(propFile);
+            }
             Reader reader = new InputStreamReader(inputStream, "UTF-8");
             properties = new Properties();
             properties.load(reader);
