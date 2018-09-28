@@ -9,17 +9,19 @@ import ru.yandex.qatools.allure.annotations.Step;
 public class LoginPage {
 
     @Step
-    public void validLogin() {
+    public void validLogin(String uname,String pass ) {
         setWebViewContext();
         //CommonMethods.getSource();
         WebElement userid = CommonMethods.driver.findElement(By.xpath("//input[@placeholder='Email address']"));
         WebElement password = CommonMethods.driver.findElement(By.xpath("//input[@placeholder='Password']"));
         WebElement loginButton = CommonMethods.driver.findElement(By.xpath("//div[text()='Login']"));
 
-        userid.sendKeys("buyer@gmail.com");
-        password.sendKeys("password");
+        userid.sendKeys(uname);
+        password.sendKeys(pass);
         CommonMethods.wait(3);
         loginButton.click();
+        CommonMethods.wait(8);
+
 
     }
 
@@ -78,9 +80,9 @@ public class LoginPage {
 
     @Step
     public void assertHomePage() {
-        CommonMethods.wait(8);
+
         WebElement homeTours = CommonMethods.driver.findElement(By.xpath("//div[text()='Home Tours']"));
         Assert.assertTrue(homeTours.isDisplayed(),"verify home page screen");
-        CommonMethods.wait(3);
+
     }
 }
