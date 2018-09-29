@@ -28,17 +28,10 @@ public class indigoSkyTest extends BasePage {
 	String uname1="caestledemo.agent@gmail.com";
     String pass="password";
 
-	@BeforeTest
-	public void setup() throws Exception
-	{
-		System.out.println("Setting up driver");
-		PropertyReader propertyReader = new PropertyReader();
-		initDriver();
 
-	}
 	
 	
-	@Test
+	@Test(priority = 1)
 	@Description("Verify Valid login flow with default user and logout")
 	public void loginToApp()
 	{
@@ -50,7 +43,7 @@ public class indigoSkyTest extends BasePage {
 		System.out.println("Exit:loginToApp");
 	}
 
-	@Test
+    @Test(priority = 3)
     @Description("Verify user feedback flow")
     public void enterFeedback()
     {
@@ -63,7 +56,7 @@ public class indigoSkyTest extends BasePage {
 
 
 
-	@Test
+    @Test(priority = 2)
 	@Description("Verify Valid SignUp flow as buyer")
 	public void signUpToApp()
 	{
@@ -76,12 +69,6 @@ public class indigoSkyTest extends BasePage {
 	}
 
 
-	@AfterTest
-	public void quit() 
-	{
-		System.out.println("closing the driver");
-		CommonMethods.quit();
-	}
-	
+
 
 }
