@@ -38,7 +38,7 @@ public class indigoSkyTest extends BasePage {
 	}
 	
 	
-	@Test
+	//@Test
 	@Description("Verify Valid login flow with default user and logout")
 	public void loginToApp()
 	{
@@ -50,7 +50,7 @@ public class indigoSkyTest extends BasePage {
 		System.out.println("Exit:loginToApp");
 	}
 
-	//@Test
+	@Test
     @Description("Verify user feedback flow")
     public void enterFeedback()
     {
@@ -63,7 +63,7 @@ public class indigoSkyTest extends BasePage {
 
 
 
-	@Test
+	//@Test
 	@Description("Verify Valid SignUp flow as buyer")
 	public void signUpToApp()
 	{

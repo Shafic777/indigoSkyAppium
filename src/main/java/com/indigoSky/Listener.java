@@ -49,12 +49,12 @@ public class Listener implements ITestListener {
        // Object testClass = result.getInstance();
         WebDriver driver = (CommonMethods.driver);
         //Allure ScreenShotRobot and SaveTestLog
-        if (driver != null) {saveScreenshotPNG(driver);}
+      //  if (driver != null) {saveScreenshotPNG(driver);}
         //Save a log on allure.
         saveTextLog(returnMethodName(arg0.getMethod()) + " failed and screenshot taken!");
         //Take base64Screenshot screenshot for extent reports
-        assert ((TakesScreenshot) driver) != null;
-        String screenshot = "data:image/png;base64," + ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+     //   assert ((TakesScreenshot) driver) != null;
+     //   String screenshot = "data:image/png;base64," + ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
         //Extentreports log and screenshot operations for failed tests.
      //   ExtendTestManager.getTest().log(LogStatus.FAIL, "Test Failed",ExtendTestManager.getTest().addBase64ScreenShot(screenshot));
     }
@@ -129,7 +129,8 @@ public class Listener implements ITestListener {
 
     @Attachment(value = "Page screenshot", type = "image/png")
     private byte[] saveScreenshotPNG(WebDriver driver) {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+      //  return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        return new byte[0];
     }
 
 }

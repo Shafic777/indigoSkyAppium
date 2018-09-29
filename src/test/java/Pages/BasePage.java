@@ -20,7 +20,7 @@ public class BasePage {
     {
         clickMenuOption();
         CommonMethods.wait(3,"Menu option to load");
-        WebElement logout = CommonMethods.driver.findElement(By.xpath("//*[@id='menu_logout']"));
+        WebElement logout = CommonMethods.driver.findElement(By.xpath("//*[@id='menu_logou']"));
         logout.click();
         CommonMethods.wait(3,"logout popup");
 
