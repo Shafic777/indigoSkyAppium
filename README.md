@@ -30,7 +30,7 @@ You can find the android and ios example tests inside `/tests` directory. Sample
 
 ## Android Tests
 
-For running android emulator we are using sdk manager. Follow this [guide](https://shankargarg.wordpress.com/2016/02/25/setup-genymotion-android-emulators-on-mac-os/) 
+For running android emulator we are using sdk manager. Follow this [guide](http://www.ntu.edu.sg/home/ehchua/programming/android/android_howto.html) 
 if you do not know how to install and run android emulator. You also need to install the application that you want to test inside android emulator.
 
 ### Update capabilities
