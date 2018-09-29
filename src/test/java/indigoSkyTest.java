@@ -28,7 +28,7 @@ public class indigoSkyTest extends BasePage {
 	String uname1="caestledemo.agent@gmail.com";
     String pass="password";
 
-	@BeforeMethod
+	@BeforeTest
 	public void setup() throws Exception
 	{
 		System.out.println("Setting up driver");
@@ -71,6 +71,7 @@ public class indigoSkyTest extends BasePage {
 		System.out.println("Enter:SingUP");
 		loginPage.validSignUp(number);
 		loginPage.assertHomePage();
+		logout();
 		System.out.println("Exit:SignUp Flow");
 	}
 

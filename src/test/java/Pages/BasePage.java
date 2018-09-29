@@ -8,7 +8,7 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 public class BasePage {
 
-    @Step
+
     public void clickMenuOption()
     {
 
@@ -16,6 +16,7 @@ public class BasePage {
         menu.click();
     }
 
+    @Step
     public void logout()
     {
         clickMenuOption();

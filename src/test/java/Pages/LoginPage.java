@@ -68,7 +68,7 @@ public class LoginPage {
         phoneNum.sendKeys("40897899870");
         retailer.sendKeys("s");
         WebElement selectFromDropDown = CommonMethods.driver.findElement(By.xpath("//*[@id='agentList_dropdown']/div[3]"));
-
+        CommonMethods.wait(1);
         selectFromDropDown.click();
         nextButton3.click();
         CommonMethods.wait(3);
@@ -76,6 +76,7 @@ public class LoginPage {
         WebElement confirmSignUp = CommonMethods.driver.findElement(By.xpath("//*[@type='button']"));
         agreeTerms.click();
         confirmSignUp.click();
+        CommonMethods.wait(5,"home page load");
     }
 
     @Step
