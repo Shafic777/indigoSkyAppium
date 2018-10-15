@@ -21,6 +21,10 @@ public class PropertyReader {
     public static String app = "";
     public static String appPackage = "";
     public static String appActivity = "";
+    public static String saucelab_testobjectApiKey= "";
+    public static boolean saucelab_execute= Boolean.parseBoolean("");
+    public static String saucelab_url= "";
+    public static String saucelab_androidDeviceName= "";
 
     public String propFile = "src/test/resources/application.properties";
     private String propFileOnJenkins ="../application.properties";
@@ -57,5 +61,9 @@ public class PropertyReader {
         app = System.getProperty("app");
         appPackage = System.getProperty("appPackage");
         appActivity = System.getProperty("appActivity");
+        saucelab_testobjectApiKey=System.getProperty("saucelab.testobjectApiKey");
+        saucelab_execute= Boolean.parseBoolean(System.getProperty("saucelab.execute"));
+        saucelab_url=System.getProperty("saucelab.url");
+        saucelab_androidDeviceName=System.getProperty("saucelab.deviceName");
     }
 }
