@@ -137,6 +137,33 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>com.saucelabs.maven.plugin</groupId>
+                <artifactId>sauce-connect-plugin</artifactId>
+                <version>2.1.24</version>
+                <configuration>
+                    <sauceUsername>indigosky</sauceUsername>
+                    <sauceAccessKey>237806e7-a6bc-403c-afbe-270b250e2dd3</sauceAccessKey>
+                </configuration>
+                <executions>
+                    <!-- Start Sauce Connect prior to running the integration tests -->
+                    <execution>
+                        <id>start-sauceconnct</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start-sauceconnect</goal>
+                        </goals>
+                    </execution>
+                    <!-- Stop the Sauce Connect process after the integration tests have finished -->
+                    <execution>
+                        <id>stop-sauceconnect</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop-sauceconnect</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <reporting>
