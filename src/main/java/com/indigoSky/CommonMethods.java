@@ -36,6 +36,8 @@ public class CommonMethods {
 			if(saucelab_execute==true) {
 				caps.setCapability("testobjectApiKey", saucelab_testobjectApiKey);
 				caps.setCapability("deviceName",saucelab_androidDeviceName);
+				caps.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
+
 				driver = new AndroidDriver(new URL(saucelab_url), caps);
 				driver.getCapabilities().getCapability("testobject_test_report_url");
 				driver.getCapabilities().getCapability("testobject_test_live_view_url");
