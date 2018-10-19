@@ -37,6 +37,7 @@ public class indigoSkyTest extends BasePage {
 	{
 
 		System.out.println("Enter:loginToApp");
+
 		loginPage.validLogin(uname1,pass);
 		loginPage.assertHomePage();
 		logout();

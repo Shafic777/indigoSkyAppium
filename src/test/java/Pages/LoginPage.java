@@ -1,27 +1,37 @@
 package Pages;
 
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.indigoSky.CommonMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
+import static com.codeborne.selenide.Selenide.$;
+import com.indigoSky.AndroidCommonFunctions;
+public class LoginPage extends AndroidCommonFunctions {
 
-public class LoginPage {
+    private SelenideElement userid = $(By.xpath("//input[@placeholder='Email address']"));
+    private SelenideElement password = $(By.xpath("//input[@placeholder='Password']"));
+    private SelenideElement loginButton = $(By.xpath("//div[text()='Login']"));
+    private SelenideElement homeTours = $(By.xpath("//div[text()='Home Tours']"));
 
     @Step
-    public void validLogin(String uname,String pass ) {
+    public LoginPage validLogin(String uname,String pass ) {
         setWebViewContext();
+        startActivity();
         //CommonMethods.getSource();
-        WebElement userid = CommonMethods.driver.findElement(By.xpath("//input[@placeholder='Email address']"));
+       /* WebElement userid = CommonMethods.driver.findElement(By.xpath("//input[@placeholder='Email address']"));
         WebElement password = CommonMethods.driver.findElement(By.xpath("//input[@placeholder='Password']"));
-        WebElement loginButton = CommonMethods.driver.findElement(By.xpath("//div[text()='Login']"));
+        WebElement loginButton = CommonMethods.driver.findElement(By.xpath("//div[text()='Login']"));*/
 
-        userid.sendKeys(uname);
-        password.sendKeys(pass);
-        CommonMethods.wait(3);
-        loginButton.click();
-        CommonMethods.wait(8);
+        enterText(userid,uname);
+        enterText(password,pass);
 
+        //CommonMethods.wait(3);
+        clickElement(loginButton);
+
+        return Selenide.page(LoginPage.class);
 
     }
 
@@ -33,7 +43,7 @@ public class LoginPage {
 
 
     @Step
-    public void validSignUp(long number) {
+    public LoginPage validSignUp(long number) {
         setWebViewContext();
 
         WebElement signup = CommonMethods.driver.findElement(By.xpath("//*[@type='button' and text()='Sign Up']"));
@@ -49,7 +59,7 @@ public class LoginPage {
         WebElement nextButton = CommonMethods.driver.findElement(By.xpath("//*[@type='button' and text()='Next']"));
         emailId.sendKeys("test" + number + "@gmail.com");
         confirmEmailId.sendKeys("test" + number + "@gmail.com");
-        firstName.sendKeys("testFirestname");
+        firstName.sendKeys("testFirstname");
         lastName.sendKeys("lastNametest");
         password.sendKeys("test123");
         confirmPassword.sendKeys("test123");
@@ -77,13 +87,15 @@ public class LoginPage {
         agreeTerms.click();
         confirmSignUp.click();
         CommonMethods.wait(5,"home page load");
+        return Selenide.page(LoginPage.class);
     }
 
     @Step
-    public void assertHomePage() {
+    public LoginPage assertHomePage() {
 
-        WebElement homeTours = CommonMethods.driver.findElement(By.xpath("//div[text()='Home Tours']"));
+      //  WebElement homeTours = CommonMethods.driver.findElement(By.xpath("//div[text()='Home Tours']"));
         Assert.assertTrue(homeTours.isDisplayed(),"verify home page screen");
+        return Selenide.page(LoginPage.class);
 
     }
 }

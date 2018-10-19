@@ -1,5 +1,6 @@
 package Pages;
 
+import com.codeborne.selenide.Selenide;
 import com.indigoSky.CommonMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,14 +11,15 @@ import ru.yandex.qatools.allure.annotations.Step;
 public class HomePage {
 
     @Step
-    public void selectTour() {
+    public HomePage selectTour() {
         WebElement tours = CommonMethods.driver.findElement(By.xpath("//*[@id='tour_creator']"));
         tours.click();
         CommonMethods.wait(8, "tour details to load");
+        return Selenide.page(HomePage.class);
     }
 
     @Step
-    public void verifyTourDetailsAndEnterFeedback() {
+    public HomePage verifyTourDetailsAndEnterFeedback() {
         WebElement tourDate = CommonMethods.driver.findElement(By.xpath(" //div[@class='header-title ng-binding']"));
         WebElement tourDescription = CommonMethods.driver.findElement(By.xpath("//div[@class='text-box ng-binding']"));
         WebElement enterFeadback = CommonMethods.driver.findElement(By.xpath("//div[@class='vermilion no-underline margin-t5 ng-binding']"));
@@ -42,6 +44,7 @@ public class HomePage {
 
         WebElement whatIdontLike=CommonMethods.driver.findElementByXPath("//div[4]/div/div[2]/ion-content/div/div/table/tbody/tr[2]/td/div/div[2]/img");
         whatIdontLike.click();
+
         CommonMethods.wait(3, "what i dont like feedback popuup");
         WebElement submitComment2 = CommonMethods.driver.findElement(By.xpath("//*[@class='button ng-binding button-positive']"));
         WebElement addText2 = CommonMethods.driver.findElement(By.xpath("//*[@class='ng-pristine ng-untouched ng-valid']"));
@@ -72,6 +75,7 @@ public class HomePage {
         CommonMethods.wait(3, "Feedback being saved");
 
         Assert.assertNull(tourDate.getText());*/
+        return Selenide.page(HomePage.class);
 
     }
 }

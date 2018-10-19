@@ -1,6 +1,6 @@
 package com.indigoSky;
 
-import io.qameta.allure.Attachment;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +13,7 @@ import org.testng.ITestListener;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
 public class Listener implements ITestListener {
 
