@@ -29,7 +29,7 @@ public class CommonMethods {
 			caps.setCapability("autoAcceptAlerts", true);
 			caps.setCapability("chromedriverExecutable", System.getProperty("user.dir")+chromedriverExecutable);
 			caps.setCapability("platformName",platformName);
-			caps.setCapability("app",System.getProperty("user.dir")+"\\src\\test\\resources\\IndigoSky_QA_3.6.11.apk");
+			caps.setCapability("app",app);
 			caps.setCapability("browserName", "");
 			caps.setCapability("appPackage",appPackage);
 			caps.setCapability("appActivity","com.juniper.android.MainActivity");
