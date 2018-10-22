@@ -34,7 +34,7 @@ public class CommonMethods {
 			caps.setCapability("appPackage",appPackage);
 			caps.setCapability("appActivity","com.juniper.android.MainActivity");
 			if(saucelab_execute==true) {
-				//caps.setCapability("testobjectApiKey", saucelab_testobjectApiKey);
+				caps.setCapability("testobjectApiKey", saucelab_testobjectApiKey);
 				caps.setCapability("deviceName",saucelab_androidDeviceName);
 				caps.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
 
