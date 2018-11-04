@@ -50,5 +50,5 @@ Allure reports will be genrated under target/allure-reports
 To genrate HTML file use this : allure  generate < path where allure xml files are being genrated> --clean
 
 
-> **Note:** Make sure both emulator and appium server is running before running the android tests.
+> **Note:** Make sure both emulator and appium server is running before running the android tests...
 
