@@ -6,21 +6,20 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>indigoSkyTest</name>
     <description>indigoSky App Test</description>
-    <properties>
-        <java.version>1.8</java.version>
-        <aspectj.version>1.8.10</aspectj.version>
-    </properties>
+    <!--<properties>-->
+            <!--<aspectj.version>1.9.1</aspectj.version>-->
+    <!--</properties>-->
     <dependencies>
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-maven</artifactId>
             <version>2.9</version>
         </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-testng-adaptor</artifactId>
-            <version>1.5.4</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>ru.yandex.qatools.allure</groupId>-->
+            <!--<artifactId>allure-testng-adaptor</artifactId>-->
+            <!--<version>1.5.4</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -32,10 +31,15 @@
             <version>2.6</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>javax.xml.bind</groupId>-->
+            <!--<artifactId>jaxb-api</artifactId>-->
+            <!--<version>2.3.0</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
+            <groupId>com.paypal.selion</groupId>
+            <artifactId>SeLion-DataProviders</artifactId>
+            <version>1.2.0</version>
         </dependency>
 
         <dependency>
@@ -53,6 +57,11 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>4.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.4</version>
         </dependency>
 
         <dependency>
@@ -72,10 +81,16 @@
             <version>4.3.5</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.13</version>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.6</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-simple</artifactId>-->
+            <!--<version>1.7.13</version>-->
+        <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -87,11 +102,6 @@
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
             <version>2.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.2.4</version>
         </dependency>
         <dependency>
             <groupId>com.saucelabs</groupId>
@@ -122,7 +132,7 @@
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
+                            <value>${project.build.directory}/target/allure-results</value>
                         </property>
                     </systemProperties>
                     <argLine>
@@ -130,41 +140,41 @@
                     </argLine>
                 </configuration>
                 <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
+                    <!--<dependency>-->
+                        <!--<groupId>org.aspectj</groupId>-->
+                        <!--<artifactId>aspectjweaver</artifactId>-->
+                        <!--<version>${aspectj.version}</version>-->
+                    <!--</dependency>-->
                 </dependencies>
             </plugin>
-                 <!-- Include Sauce Connect plugin -->
-        <plugin>
-            <groupId>com.saucelabs.maven.plugin</groupId>
-            <artifactId>sauce-connect-plugin</artifactId>
-            <version>2.1.24</version>
-            <configuration>
-                <sauceUsername>indigosky</sauceUsername>
-                <sauceAccessKey>237806e7-a6bc-403c-afbe-270b250e2dd3</sauceAccessKey>
-            </configuration>
-            <executions>
-                <!-- Start Sauce Connect prior to running the integration tests -->
-                <execution>
-                    <id>start-sauceconnct</id>
-                    <phase>pre-integration-test</phase>
-                    <goals>
-                        <goal>start-sauceconnect</goal>
-                    </goals>
-                </execution>
-                <!-- Stop the Sauce Connect process after the integration tests have finished -->
-                <execution>
-                    <id>stop-sauceconnect</id>
-                    <phase>post-integration-test</phase>
-                    <goals>
-                        <goal>stop-sauceconnect</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
+            <!-- Include Sauce Connect plugin -->
+            <plugin>
+                <groupId>com.saucelabs.maven.plugin</groupId>
+                <artifactId>sauce-connect-plugin</artifactId>
+                <version>2.1.24</version>
+                <configuration>
+                    <sauceUsername>indigosky</sauceUsername>
+                    <sauceAccessKey>237806e7-a6bc-403c-afbe-270b250e2dd3</sauceAccessKey>
+                </configuration>
+                <executions>
+                    <!-- Start Sauce Connect prior to running the integration tests -->
+                    <execution>
+                        <id>start-sauceconnct</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start-sauceconnect</goal>
+                        </goals>
+                    </execution>
+                    <!-- Stop the Sauce Connect process after the integration tests have finished -->
+                    <execution>
+                        <id>stop-sauceconnect</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop-sauceconnect</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <reporting>

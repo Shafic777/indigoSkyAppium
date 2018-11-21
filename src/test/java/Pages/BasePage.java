@@ -1,32 +1,13 @@
 package Pages;
 
-import com.indigoSky.CommonMethods;
-import com.indigoSky.PropertyReader;
+import com.indigoSky.app.core.CommonMethods;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import ru.yandex.qatools.allure.annotations.Step;
-
-import static com.indigoSky.CommonMethods.initDriver;
+//import ru.yandex.qatools.allure.annotations.Step;
 
 public class BasePage {
-
-    @BeforeSuite
-    public void setup() throws Exception
-    {
-        System.out.println("Setting up driver");
-        PropertyReader propertyReader = new PropertyReader();
-        initDriver();
-
-    }
-    @AfterSuite
-    public void quit()
-    {
-        System.out.println("closing the driver");
-        CommonMethods.quit();
-    }
 
 
     public void clickMenuOption()

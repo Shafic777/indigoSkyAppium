@@ -1,18 +1,23 @@
 import Pages.BasePage;
 import Pages.HomePage;
 import Pages.LoginPage;
-import com.indigoSky.CommonMethods;
-import com.indigoSky.PropertyReader;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import com.indigoSky.app.core.CommonMethods;
+import com.indigoSky.app.core.PropertyReader;
+import com.indigoSky.app.dataPojo.loginData;
+import com.paypal.selion.platform.dataprovider.DataProviderFactory;
+import com.paypal.selion.platform.dataprovider.SeLionDataProvider;
+import com.paypal.selion.platform.dataprovider.impl.FileSystemResource;
+import io.qameta.allure.Description;
+//import jdk.internal.jline.internal.Log;
+import org.apache.commons.logging.impl.Log4JLogger;
 import org.testng.annotations.*;
-import ru.yandex.qatools.allure.annotations.Description;
-import java.net.MalformedURLException;
-import java.util.Properties;
+//import ru.yandex.qatools.allure.annotations.Description;
 
 
-import static com.indigoSky.CommonMethods.getRandomNumber;
-import static com.indigoSky.CommonMethods.initDriver;
+import java.io.IOException;
+
+import static com.indigoSky.app.core.CommonMethods.getRandomNumber;
+import static com.indigoSky.app.core.CommonMethods.initDriver;
 
 public class indigoSkyTest extends BasePage {
 
@@ -28,19 +33,46 @@ public class indigoSkyTest extends BasePage {
 	String uname1="caestledemo.agent@gmail.com";
     String pass="password";
 
+	@BeforeTest
+	public void setup() throws Exception
+	{
+		System.out.println("Setting up driver");
+		PropertyReader propertyReader = new PropertyReader();
+		initDriver();
+        loginPage.setWebViewContext();
 
-	
-	
-	@Test(priority = 1)
+    }
+
+	@DataProvider(name ="alldata")
+	public Object[][] getAllDataYamlDataProvider() throws IOException {
+		FileSystemResource resource =
+				new FileSystemResource("src/test/resources/data/testData.yaml");
+		SeLionDataProvider dataProvider =
+				DataProviderFactory.getDataProvider(resource);
+        System.out.println("data provider len:"+dataProvider.getAllData().length);
+
+		return dataProvider.getAllData();
+	}
+	/*@DataProvider(name = "yamlDataProvider")
+	public Object[][] getYamlDataProvider() throws Exception {
+		FileSystemResource resource =
+				new FileSystemResource("C:\\Users\\Shafic77\\indigoAppium\\src\\test\\resources\\data\\testData.yaml");
+		SeLionDataProvider dataProvider =
+				DataProviderFactory.getDataProvider(resource);
+		String[] keyArray = new String[] {"test1"};
+		return dataProvider.getDataByKeys(keyArray);
+	}*/
+	@Test(dataProvider ="alldata")
 	@Description("Verify Valid login flow with default user and logout")
-	public void loginToApp()
+	public void loginToApp(loginData loginDataObj)
 	{
 
-		System.out.println("Enter:loginToApp");
-		loginPage.validLogin(uname1,pass);
+        System.out.println("Enter:loginToApp");
+        System.out.println("Test For Input Data:"+loginDataObj.toString());
+		loginPage.validLogin(loginDataObj.getLoginID().toString(),loginDataObj.getPassword().toString());
 		loginPage.assertHomePage();
 		logout();
-		System.out.println("Exit:loginToApp");
+        System.out.println("Exit:loginToApp");
 	}
 
     @Test(priority = 3)

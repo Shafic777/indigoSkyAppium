@@ -1,16 +1,14 @@
-package com.indigoSky;
+package com.indigoSky.app.core;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
-
+import static com.indigoSky.app.AppiumController.LOG;
+import static com.indigoSky.app.core.PropertyReader.*;
+import com.indigoSky.app.AppiumController;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
-
-import static com.indigoSky.AppiumController.LOG;
-import static com.indigoSky.PropertyReader.*;
-import static com.indigoSky.PropertyReader.appiumPort;
 
 public class CommonMethods {
 
@@ -22,22 +20,26 @@ public class CommonMethods {
 		LOG.info("Setting Android Driver");
 		try {
 			DesiredCapabilities caps = DesiredCapabilities.android();
-
 			caps.setCapability("automationName","appium");
+			caps.setCapability("deviceName", PropertyReader.androidDeviceName);
+			//caps.setCapability("noReset", true);
 			caps.setCapability("recreateChromeDriverSessions", true);
-			caps.setCapability("deviceOrientation", deviceOrientation);
+			caps.setCapability("deviceOrientation", PropertyReader.deviceOrientation);
 			caps.setCapability("autoAcceptAlerts", true);
-			caps.setCapability("chromedriverExecutable", System.getProperty("user.dir")+chromedriverExecutable);
-			caps.setCapability("platformName",platformName);
-			caps.setCapability("app",app);
+			caps.setCapability("chromedriverExecutable", System.getProperty("user.dir")+ PropertyReader.chromedriverExecutable);
+		//	caps.setCapability("chromedriverExecutable", chromedriverExecutable);
+			caps.setCapability("platformName", PropertyReader.platformName);
+			caps.setCapability("app",System.getProperty("user.dir")+"\\src\\test\\resources\\IndigoSky_QA_3.6.11.apk");
+		///	caps.setCapability("app",System.getProperty("user.dir")+app);
 			caps.setCapability("browserName", "");
-			caps.setCapability("appPackage",appPackage);
+			caps.setCapability("appPackage", PropertyReader.appPackage);
 			caps.setCapability("appActivity","com.juniper.android.MainActivity");
 			if(saucelab_execute==true) {
 				caps.setCapability("testobjectApiKey", saucelab_testobjectApiKey);
 				caps.setCapability("deviceName",saucelab_androidDeviceName);
 				caps.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
 
+			driver = new AndroidDriver(new URL("http://"+ PropertyReader.appiumIP+":"+ PropertyReader.appiumPort+"/wd/hub"), caps);
 				driver = new AndroidDriver(new URL(saucelab_url), caps);
 				driver.getCapabilities().getCapability("testobject_test_report_url");
 				driver.getCapabilities().getCapability("testobject_test_live_view_url");

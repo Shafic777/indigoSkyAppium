@@ -1,10 +1,10 @@
-package com.indigoSky;
+package com.indigoSky.app;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import static com.indigoSky.PropertyReader.*;
+import static com.indigoSky.app.core.PropertyReader.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 

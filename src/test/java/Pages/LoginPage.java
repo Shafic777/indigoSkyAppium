@@ -1,16 +1,17 @@
 package Pages;
 
-import com.indigoSky.CommonMethods;
+import com.indigoSky.app.core.CommonMethods;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import ru.yandex.qatools.allure.annotations.Step;
+//import ru.yandex.qatools.allure.annotations.Step;
 
 public class LoginPage {
 
     @Step
     public void validLogin(String uname,String pass ) {
-        setWebViewContext();
+        //setWebViewContext();
         //CommonMethods.getSource();
         WebElement userid = CommonMethods.driver.findElement(By.xpath("//input[@placeholder='Email address']"));
         WebElement password = CommonMethods.driver.findElement(By.xpath("//input[@placeholder='Password']"));
@@ -26,9 +27,9 @@ public class LoginPage {
     }
 
     public void setWebViewContext() {
-        CommonMethods.wait(20);
+        CommonMethods.wait(10);
         CommonMethods.setContext("WEBVIEW_com.juniper.android");
-        CommonMethods.wait(5);
+        CommonMethods.wait(2);
     }
 
 
