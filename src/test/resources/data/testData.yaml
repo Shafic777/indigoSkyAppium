@@ -1,0 +1,29 @@
+- !!com.indigoSky.app.dataPojo.loginData
+  # Buyer Agent (BAGNT) account
+  loginID : caestledemo.agent@gmail.com
+  password : password
+
+- !!com.indigoSky.app.dataPojo.loginData
+  # MOVER account
+  loginID : ganesh@jobuli.in
+  password : password
+
+- !!com.indigoSky.app.dataPojo.loginData
+  # Lender account
+  loginID: indigoskyuser@bayeq.com
+  password: password
+
+- !!com.indigoSky.app.dataPojo.loginData
+  # Escro account
+  loginID: Jobuliescrow@gmail.com
+  password: password
+
+- !!com.indigoSky.app.dataPojo.loginData
+  # Buyer account
+   loginID: buyer@gmail.com
+   password: password
+
+- !!com.indigoSky.app.dataPojo.loginData
+  # Insurance account
+  loginID: jobuliescrow11@gmail.com
+  password: password

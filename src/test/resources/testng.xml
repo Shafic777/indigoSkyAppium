@@ -11,7 +11,7 @@
     <!--    <parameter name="runLocally" value="true"/>-->
 
     <listeners>
-        <listener class-name="com.indigoSky.Listener"></listener>
+        <listener class-name="com.indigoSky.app.core.Listener"></listener>
     </listeners>
     <test name="SampleTest">
         <classes>

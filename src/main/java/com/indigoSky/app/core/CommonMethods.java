@@ -1,16 +1,13 @@
-package com.indigoSky;
+package com.indigoSky.app.core;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.indigoSky.app.AppiumController;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
-
-import static com.indigoSky.AppiumController.LOG;
-import static com.indigoSky.PropertyReader.*;
-import static com.indigoSky.PropertyReader.appiumPort;
 
 public class CommonMethods {
 
@@ -36,7 +33,7 @@ public class CommonMethods {
 
 		//Thread.sleep(10000);
 
-		LOG.info("Setting Android Driver");
+		AppiumController.LOG.info("Setting Android Driver");
 
 		//AppiumController.startAppiumServer();
 		//   AppiumEmulatorController.startEmulator();
@@ -44,23 +41,23 @@ public class CommonMethods {
 		try {
 			DesiredCapabilities caps = DesiredCapabilities.android();
 			caps.setCapability("automationName","appium");
-			caps.setCapability("deviceName",androidDeviceName);
+			caps.setCapability("deviceName", PropertyReader.androidDeviceName);
 			//caps.setCapability("noReset", true);
 			caps.setCapability("recreateChromeDriverSessions", true);
-			caps.setCapability("deviceOrientation", deviceOrientation);
+			caps.setCapability("deviceOrientation", PropertyReader.deviceOrientation);
 			caps.setCapability("autoAcceptAlerts", true);
-			caps.setCapability("chromedriverExecutable", System.getProperty("user.dir")+chromedriverExecutable);
+			caps.setCapability("chromedriverExecutable", System.getProperty("user.dir")+ PropertyReader.chromedriverExecutable);
 		//	caps.setCapability("chromedriverExecutable", chromedriverExecutable);
-			caps.setCapability("platformName",platformName);
+			caps.setCapability("platformName", PropertyReader.platformName);
 			caps.setCapability("app",System.getProperty("user.dir")+"\\src\\test\\resources\\IndigoSky_QA_3.6.11.apk");
 		///	caps.setCapability("app",System.getProperty("user.dir")+app);
 			caps.setCapability("browserName", "");
-			caps.setCapability("appPackage",appPackage);
+			caps.setCapability("appPackage", PropertyReader.appPackage);
 			caps.setCapability("appActivity","com.juniper.android.MainActivity");
 
-			driver = new AndroidDriver(new URL("http://"+appiumIP+":"+appiumPort+"/wd/hub"), caps);
+			driver = new AndroidDriver(new URL("http://"+ PropertyReader.appiumIP+":"+ PropertyReader.appiumPort+"/wd/hub"), caps);
 		} catch (MalformedURLException e) {
-			LOG.info("Incorrect URL");
+			AppiumController.LOG.info("Incorrect URL");
 			e.printStackTrace();
 			throw new RuntimeException("Unable to setup driver");
 		}

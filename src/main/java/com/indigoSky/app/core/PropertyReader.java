@@ -1,4 +1,4 @@
-package com.indigoSky;
+package com.indigoSky.app.core;
 
 
 import org.apache.commons.io.FileUtils;

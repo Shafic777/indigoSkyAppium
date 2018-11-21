@@ -1,4 +1,4 @@
-package com.indigoSky;
+package com.indigoSky.app;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -10,12 +10,12 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-import static com.indigoSky.PropertyReader.appiumIP;
-import static com.indigoSky.PropertyReader.appiumPort;
+import static com.indigoSky.app.core.PropertyReader.appiumIP;
+import static com.indigoSky.app.core.PropertyReader.appiumPort;
 
 public class AppiumController {
 
-    static Logger LOG = LoggerFactory.getLogger(AppiumController.class);
+    public static Logger LOG = LoggerFactory.getLogger(AppiumController.class);
     private AppiumDriverLocalService service;
     private AppiumServiceBuilder builder;
     private DesiredCapabilities capabilities;
